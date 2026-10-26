@@ -563,6 +563,9 @@ tbody th {
 }
 tbody tr:nth-child(even) td { background: #fafefc; }
 
+/* tautan panjang di dalam tabel (URL) harus bisa turun baris */
+tbody td a { word-break: break-word; overflow-wrap: anywhere; }
+
 /* ---------- 11. Kotak catatan ---------- */
 .catatan {
   display: flex;

@@ -51,7 +51,7 @@ hidup-sehat-sdg3/
 - **Minimal 5 halaman** — tersedia 7 halaman HTML yang saling terhubung.
 - **Konten sesuai tema SDG 3** — pola hidup sehat, gizi seimbang, aktivitas fisik,
   kesehatan mental, dan pencegahan penyakit.
-- **Sumber gambar dicantumkan** — kredit fotografer dan lisensi tercantum pada
+- **Sumber gambar dicantumkan** — nama penerbit dan judul artikel tercantum pada
   setiap caption gambar dan di halaman `sumber.html` (lihat juga bagian bawah README ini).
 - **HTML + CSS tanpa framework** — semua tata letak dibuat dengan CSS Grid, Flexbox,
   dan media query sendiri. Tidak ada CDN framework apa pun.
@@ -82,41 +82,29 @@ Angka dan anjuran diambil dari lembaga resmi, lalu ditulis ulang dengan bahasa s
 
 Daftar lengkap dengan URL ada di halaman **`sumber.html`**.
 
-## 🖼️ Sumber gambar (Wikimedia Commons)
+## 🖼️ Sumber gambar
 
-Semua foto berasal dari Wikimedia Commons dan digunakan sesuai lisensinya.
-Foto berlisensi CC BY / CC BY-SA mencantumkan nama pembuat pada caption di halaman.
+Seluruh foto diambil dari artikel pada situs resmi penerbitnya (bukan dari mesin
+pencari gambar), lalu disimpan ulang ke folder `assets/img/` agar situs tetap
+ringan. Nama penerbit dan judul artikel dicantumkan pada caption di bawah setiap
+foto dan pada tabel kredit di halaman `sumber.html`.
 
-| Berkas | Judul asli di Commons | Pembuat | Lisensi |
+| Berkas | Judul artikel / halaman asal | Penerbit | Tautan |
 |---|---|---|---|
-| `hero-beranda.jpg` | Healthy is health.jpg | SharonDawn | CC BY-SA 4.0 |
-| `gizi-hero.jpg` | Healthy meal planning with fresh fruits and vegetables in a bright kitchen setting.jpg | Shixart1985 | CC BY 2.0 |
-| `gizi-pasar.jpg` | Vegetable and fruit section in Denpasar market..JPG | Rudolph.A.furtado | CC0 |
-| `gizi-hidrasi.jpg` | Boy drinking water in house.jpg | Debske | CC0 |
-| `aktivitas-hero.jpg` | Jogger Centennial Park 001.jpg | Sardaka | CC BY-SA 4.0 |
-| `aktivitas-yoga.jpg` | Outdoor Yoga At the Park.jpg | Vuemobi Media | CC BY-SA 2.0 |
-| `mental-hero.jpg` | Meditation Focus Point.jpg | Bondigoldwiki | CC0 |
-| `pencegahan-hero.jpg` | Washing hands with soap (1).jpg | Beat Ruest | CC BY-SA 4.0 |
-| `pencegahan-tensi.jpg` | Blood pressure measurement, Poland.png | Kris D | CC BY-SA 2.0 |
+| `hero-beranda.jpg` | Pola Makan Sehat: Kunci Mencegah Penyakit dan Meningkatkan Kualitas Hidup | Medistra Hospital | https://medistra.com/article/pola-makan-sehat-kunci-mencegah-penyakit-dan-meningkatkan-kualitas-hidup |
+| `aktivitas-hero.jpg` | Jogging: Artinya Apa dan Bagaimana Cara Melakukannya | Fithub Indonesia | https://fithub.id/blog/jogging-artinya |
+| `gizi-hidrasi.jpg` | Jangan Remehkan Manfaat Air Putih | Alodokter | https://www.alodokter.com/jangan-remehkan-manfaat-air-putih |
+| `gizi-pasar.jpg` | Tips dan Trik Memilih Buah dan Sayuran di Pasar Tradisional | Jurnalpost | https://jurnalpost.com/tips-dan-trik-memilih-buah-dan-sayuran-di-pasar-tradisional/89125/ |
+| `gizi-hero.jpg` | Pakar Gizi Ingatkan Perlunya Gizi Seimbang pada Penderita Anemia | ANTARA News Sulawesi Tengah | https://sulteng.antaranews.com/berita/177984/pakar-gizi-ingatkan-perlunya-gizi-seimbang-pada-penderita-anemia |
+| `minum-air-makan.jpg` | Kenapa Harus Minum Air Putih Setelah Makan? | Cleopure Water | https://cleopurewater.com/blog/kesehatan/kenapa-harus-minum-air-putih-setelah-makan/ |
+| `aktivitas-lari.jpg` | Hari Lari Sedunia 7 Juni, Yuk Simak Manfaat Berlari | detikcom | https://news.detik.com/berita/d-6759293/hari-lari-sedunia-7-juni-yuk-simak-manfaat-berlari |
+| `aktivitas-yoga.jpg` | Jenis-jenis Yoga yang Baik bagi Tubuh | KlikDokter | https://www.klikdokter.com/gaya-hidup/sehat-bugar/jenis-jenis-yoga-yang-baik-bagi-tubuh |
+| `mental-hero.jpg` | 4 Gangguan Mental yang Terjadi Tanpa Disadari | Halodoc | https://www.halodoc.com/artikel/4-gangguan-mental-yang-terjadi-tanpa-disadari |
+| `pencegahan-hero.jpg` | Cuci Tangan Pakai Sabun: Kebiasaan Sederhana untuk Mencegah Penyebaran Penyakit | Farmasi UMMADA | https://farmasi.ummada.ac.id/2026/08/10/cuci-tangan-pakai-sabun-kebiasaan-sederhana-untuk-mencegah-penyebaran-penyakit/ |
+| `pencegahan-tensi.jpg` | Berapa Tekanan Darah Normal Orang Dewasa? | Alodokter | https://www.alodokter.com/berapa-tekanan-darah-normal-orang-dewasa |
 
-Tautan halaman asal tiap gambar:
-
-- https://commons.wikimedia.org/wiki/File:Healthy_is_health.jpg
-- https://commons.wikimedia.org/wiki/File:Healthy_meal_planning_with_fresh_fruits_and_vegetables_in_a_bright_kitchen_setting.jpg
-- https://commons.wikimedia.org/wiki/File:Vegetable_and_fruit_section_in_Denpasar_market..JPG
-- https://commons.wikimedia.org/wiki/File:Boy_drinking_water_in_house.jpg
-- https://commons.wikimedia.org/wiki/File:Jogger_Centennial_Park_001.jpg
-- https://commons.wikimedia.org/wiki/File:Outdoor_Yoga_At_the_Park.jpg
-- https://commons.wikimedia.org/wiki/File:Meditation_Focus_Point.jpg
-- https://commons.wikimedia.org/wiki/File:Washing_hands_with_soap_(1).jpg
-- https://commons.wikimedia.org/wiki/File:Blood_pressure_measurement,_Poland.png
-
-Keterangan lisensi:
-
-- **CC0** — domain publik, bebas dipakai tanpa syarat atribusi (kredit tetap dicantumkan).
-- **CC BY 2.0** — bebas dipakai dan diubah, wajib mencantumkan pembuat.
-- **CC BY-SA 2.0 / 4.0** — seperti CC BY, karya turunan memakai lisensi yang sama.
-  Gambar di situs ini hanya diubah ukuran dan dikompres, isinya tidak diubah.
+Gambar hanya disesuaikan ukuran dan kompresinya agar cepat dimuat; isi foto tidak
+diubah. Kredit selalu dicantumkan sebagai bentuk kejujuran akademik.
 
 Font **Plus Jakarta Sans** dimuat dari Google Fonts dengan lisensi SIL Open Font License 1.1.
 

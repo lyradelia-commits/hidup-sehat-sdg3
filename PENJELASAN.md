@@ -117,19 +117,20 @@ Satu hal yang sering jadi error di validator dan sudah dihindari: **urutan
 heading tidak boleh melompat**. Contoh: setelah `<h2>` langsung `<h4>` itu error.
 Karena itu heading di footer memakai `<h3>`, bukan `<h4>`.
 
-## 7. Kenapa gambarnya dari Wikimedia Commons?
+## 7. Dari mana gambar-gambarnya?
 
-Karena lisensinya jelas dan boleh dipakai untuk tugas. Setiap foto:
+Semua foto diambil dari artikel pada situs resmi penerbitnya, bukan dari mesin
+pencari gambar (Google Images). Setiap foto:
 
-- berasal dari Wikimedia Commons,
-- dicantumkan nama pembuat + jenis lisensi di caption,
-- dicantumkan judul asli, pembuat, lisensi, dan tautan halaman asal di
-  `sumber.html` dan `README.md`.
+- diambil dari halaman artikel aslinya (Medistra, Fithub, Alodokter, ANTARA,
+  detikcom, KlikDokter, Halodoc, Cleopure, Jurnalpost, Farmasi UMMADA),
+- nama penerbit + judul artikel dicantumkan pada caption di bawah foto,
+- judul lengkap, penerbit, dan tautan artikelnya tercatat di `sumber.html`
+  dan `README.md`.
 
-Foto CC BY dan CC BY-SA **wajib** mencantumkan pembuat, sedangkan CC0 tidak wajib
-tapi tetap dicantumkan sebagai bentuk kejujuran akademik. Gambar hanya diubah
-ukuran dan dikompres, isinya tidak diedit, jadi tidak ada kewajiban
-"share-alike" tambahan.
+Gambar hanya diubah ukuran dan dikompres agar situs cepat dimuat; isi foto tidak
+diedit. Kredit dicantumkan sebagai bentuk kejujuran akademik dan agar sumbernya
+bisa diverifikasi.
 
 ## 8. Kalau ditanya "ini responsive atau belum, buktinya apa?"
 
