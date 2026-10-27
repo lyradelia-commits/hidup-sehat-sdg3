@@ -1,120 +1,634 @@
 # Hidup Sehat — Edukasi Kesehatan Masyarakat (SDG 3)
 
-Website statis bertema **SDG 3: Kehidupan Sehat dan Sejahtera**, berisi edukasi
-kesehatan masyarakat untuk publik. Dibuat sebagai tugas mata kuliah
-**Pemrograman Web** menggunakan **HTML dan CSS murni tanpa framework**
-(tidak ada Bootstrap, Tailwind, React, atau library CSS lainnya).
+Website statis bertema **SDG 3: Kehidupan Sehat dan Sejahtera** yang berisi edukasi
+kesehatan masyarakat untuk publik. Dibangun dengan **HTML dan CSS murni tanpa framework**
+sebagai tugas mata kuliah **Pemrograman Web**.
 
-## 🌐 Link
+---
 
-| Kebutuhan tugas | Link |
+## 1. Identitas Kelompok dan Pembagian Tugas
+
+**Mata kuliah:** Pemrograman Web
+**Judul tugas:** Website Edukasi Kesehatan Masyarakat Bertema SDG 3
+**Jumlah halaman:** 7 halaman HTML statis
+
+| No | Nama | NIM | Pembagian tugas |
+|---|---|---|---|
+| 1 | **Kadek Lyradelia Pracili** | 2515091032 | Struktur proyek & stylesheet global (`css/style.css`), halaman Beranda, halaman Sumber, pengelolaan aset gambar, build & deploy ke GitHub Pages |
+| 2 | **Astria Laura Dwi Putri** | 2515091082 | Halaman Pola Hidup Sehat dan Gizi Seimbang, penyusunan tabel data (kebutuhan tidur, porsi Isi Piringku), verifikasi angka rujukan WHO/Kemenkes |
+| 3 | **Dhea Natasya Putri** | 2515091131 | Halaman Aktivitas Fisik, Kesehatan Mental, dan Pencegahan Penyakit, navigasi & menu mobile, pengujian responsif 1440/768/375 px |
+
+> Pembagian tugas di atas mengikuti kepemilikan halaman. Silakan sesuaikan isi kolom
+> terakhir bila pembagian di kelompok berbeda.
+
+---
+
+## 2. Judul, Tema SDGs, dan Sasaran Pengguna
+
+**Judul website:** Hidup Sehat — Edukasi Kesehatan Masyarakat
+
+**Tema SDGs:** **Goal 3 — Good Health and Well-being (Kehidupan Sehat dan Sejahtera)**
+
+Alasan memilih tema ini: SDG 3 menyentuh seluruh siklus hidup manusia, dan capaiannya
+sangat ditentukan oleh perilaku harian — makan, bergerak, tidur, mengelola stres,
+menjaga kebersihan — bukan hanya oleh layanan rumah sakit. Perilaku itulah yang bisa
+diedukasi lewat media yang mudah diakses, salah satunya website.
+
+**Sasaran pengguna:**
+
+| Segmen | Kebutuhan yang dilayani |
 |---|---|
-| **Versi online** (tampilan langsung) | https://lyradelia-commits.github.io/hidup-sehat-sdg3/ |
-| **Versi repositori GitHub** (source code) | https://github.com/lyradelia-commits/hidup-sehat-sdg3 |
+| **Remaja & mahasiswa (15–24 tahun)** | Anjuran aktivitas fisik, gizi praktis dengan budget terbatas, cara mengenali stres dan mencari bantuan |
+| **Keluarga muda / orang tua** | Panduan porsi makan keluarga, jadwal imunisasi anak, kebiasaan bersih di rumah |
+| **Masyarakat umum dengan literasi kesehatan rendah** | Penjelasan singkat tanpa istilah medis rumit, angka yang bisa langsung dipakai |
+| **Kader kesehatan / pelajar** | Rujukan cepat ke sumber resmi WHO dan Kemenkes yang bisa diverifikasi |
 
-## 📄 Halaman (7 halaman)
+---
 
-| No | File | Isi |
+## 3. Tujuan, Manfaat, dan Deskripsi Setiap Halaman
+
+### 3.1 Tujuan
+
+1. Menyediakan kanal edukasi kesehatan berbahasa Indonesia yang **ringkas, mudah dibaca, dan berbasis rujukan resmi** (WHO dan Kementerian Kesehatan RI).
+2. Menerjemahkan angka dan anjuran kesehatan menjadi **tindakan harian yang konkret**, bukan sekadar informasi.
+3. Membiasakan pembaca **memverifikasi sumber** — setiap angka bisa dilacak ke publikasi aslinya.
+4. Memenuhi capaian pembelajaran mata kuliah Pemrograman Web: membangun situs **statis, valid, dan responsif** tanpa framework.
+
+### 3.2 Manfaat
+
+| Bagi | Manfaat |
+|---|---|
+| **Pembaca umum** | Tahu batas gula/garam/lemak, menit aktivitas fisik yang dibutuhkan, dan tanda kapan harus mencari bantuan kesehatan mental |
+| **Mahasiswa** | Contoh penerapan nyata HTML semantik, CSS Grid/Flexbox, media query, dan aksesibilitas dasar |
+| **Kelompok penyusun** | Latihan kerja tim: pembagian halaman, konsistensi desain, pengujian lintas perangkat, dan pengelolaan repositori |
+
+### 3.3 Deskripsi setiap halaman
+
+| No | Halaman | Tujuan halaman | Isi utama |
+|---|---|---|---|
+| 1 | **Beranda** (`index.html`) | Memberi gambaran tema dan mengarahkan pengunjung ke lima materi | Hero, 4 kartu statistik global (31% kurang aktif · 1 dari 7 gangguan mental · 75% kematian akibat PTM · 1/3 target SDG 3.4), 5 kartu pilar materi, alasan pentingnya pencegahan, ajakan bertindak |
+| 2 | **Pola Hidup Sehat** (`pola-hidup-sehat.html`) | Menjelaskan kebiasaan dasar yang menopang kesehatan | Definisi pola hidup sehat, 7 kebiasaan (tidur, makan, gerak, kebersihan, rokok, stres, cek kesehatan), tabel kebutuhan tidur per usia, batas G4-G1-L5, ceklis harian, mitos vs fakta |
+| 3 | **Gizi Seimbang** (`gizi-seimbang.html`) | Mengajarkan komposisi dan porsi makan yang benar | Prinsip Isi Piringku, tabel porsi per kelompok pangan, 4 angka acuan WHO (400 g · 25 g · <5 g · <10%), G4-G1-L5, tabel contoh menu sehari, FAQ |
+| 4 | **Aktivitas Fisik** (`aktivitas-fisik.html`) | Menjelaskan berapa banyak gerak yang dibutuhkan tubuh | Data kurang gerak (WHO & SKI 2023), tabel anjuran per kelompok usia, cara membedakan intensitas ringan/sedang/berat, panduan mulai dari nol, tips mengurangi duduk lama |
+| 5 | **Kesehatan Mental** (`kesehatan-mental.html`) | Mengurangi stigma dan menunjukkan jalan mencari bantuan | Definisi sehat mental (WHO), tabel pembeda stres–cemas–depresi, 6 kebiasaan menjaga pikiran, 6 tanda perlu bantuan, layanan bantuan di Indonesia (119 ext. 8, puskesmas, kampus, psikolog) |
+| 6 | **Pencegahan Penyakit** (`pencegahan-penyakit.html`) | Membedakan strategi pencegahan penyakit menular dan tidak menular | Dua kelompok penyakit, 6 langkah cuci tangan pakai sabun, tabel jadwal imunisasi rutin, pengendalian faktor risiko PTM, bahaya rokok, FAQ |
+| 7 | **Sumber** (`sumber.html`) | Menyediakan transparansi rujukan dan kredit aset | Tabel 25 sumber rujukan, tabel kredit 11 foto beserta penerbit dan tautan artikel asli, catatan tentang situs, informasi kontak darurat |
+
+Semua halaman memakai navigasi, *footer*, dan gaya visual yang sama agar pengunjung
+tidak merasa berpindah situs.
+
+---
+
+## 4. Teknologi yang Digunakan
+
+| Kategori | Teknologi | Keterangan |
 |---|---|---|
-| 1 | `index.html` | Beranda: pengenalan SDG 3, statistik kunci, navigasi ke lima materi |
-| 2 | `pola-hidup-sehat.html` | Tujuh kebiasaan dasar, tabel kebutuhan tidur, batas G4-G1-L5, mitos vs fakta |
-| 3 | `gizi-seimbang.html` | Panduan Isi Piringku, angka acuan WHO, tabel menu harian |
-| 4 | `aktivitas-fisik.html` | Anjuran WHO per kelompok usia, intensitas sedang/berat, tips mulai dari nol |
-| 5 | `kesehatan-mental.html` | Beda stres–cemas–depresi, kebiasaan menjaga pikiran, layanan bantuan |
-| 6 | `pencegahan-penyakit.html` | 6 langkah cuci tangan, jadwal imunisasi, skrining, bahaya rokok |
-| 7 | `sumber.html` | Daftar sumber rujukan + kredit foto dan lisensi |
+| **Markup** | HTML5 | Elemen semantik: `header`, `nav`, `main`, `section`, `article`, `figure`, `figcaption`, `table`, `thead`, `tbody`, `th scope`, `details`, `summary`, `footer` |
+| **Styling** | CSS3 murni | CSS Custom Properties (variabel), Grid Layout, Flexbox, `clamp()`, media queries, `prefers-reduced-motion`, `@media print` |
+| **Interaksi** | JavaScript ES5 (vanilla) | **32 baris**, hanya untuk tombol menu di layar kecil. Tanpa library, tanpa framework |
+| **Tipografi** | Google Fonts — Plus Jakarta Sans | Lisensi SIL Open Font License 1.1, bobot 400/600/700/800 |
+| **Ikon** | SVG inline | Ditulis langsung di HTML, tidak perlu file ikon tambahan |
+| **Gambar** | JPEG terkompresi | Maksimal 1400 px, kualitas 85, disimpan lokal di `assets/img/` |
+| **Version control** | Git + GitHub | Repositori publik, riwayat commit per tahap pengerjaan |
+| **Hosting** | GitHub Pages | Hosting statis gratis, ter-deploy otomatis dari branch `main` |
+| **Validasi** | Nu HTML Checker (`vnu.jar`) & W3C CSS Validator | Engine sama dengan validator.w3.org — hasil **0 error** |
 
-## 📁 Struktur folder
+**Yang sengaja TIDAK dipakai:** Bootstrap, Tailwind, Bulma, jQuery, React, Vue,
+SASS/SCSS, maupun build tool apa pun. Total ada **0 dependensi** — cukup buka
+`index.html` di browser.
+
+---
+
+## 5. Penjelasan Penting dari Implementasi
+
+### 5.1 HTML — struktur semantik dan aksesibilitas
+
+Setiap halaman memakai kerangka yang sama: `head` → `header` (logo + navigasi) →
+`main` (isi) → `footer` → satu baris `script`.
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hidup Sehat — Edukasi Kesehatan Masyarakat | SDG 3</title>
+  <meta name="description" content="Situs edukasi kesehatan masyarakat sesuai SDG 3 ...">
+  <meta name="author" content="Kadek Lyradelia Pracili">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- tautan untuk pengguna keyboard: lompat langsung ke konten -->
+  <a class="skip-link" href="#konten-utama">Lewati ke konten utama</a>
+  <header class="situs-header"> ... </header>
+  <main id="konten-utama">
+    <section class="hero"> ... </section>
+  </main>
+  <footer class="situs-footer"> ... </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
+```
+
+Poin penting:
+
+- `lang="id"` supaya pembaca layar memakai pelafalan bahasa Indonesia.
+- `meta viewport` adalah **syarat mutlak** agar media query bekerja di ponsel. Tanpa baris ini, halaman dirender selebar ±980 px lalu diperkecil, sehingga teks terlihat kecil.
+- `skip-link` tersembunyi (`left: -9999px`) dan baru muncul saat difokuskan dengan tombol Tab.
+- Gambar selalu punya `alt` deskriptif serta `width` + `height` agar tata letak tidak meloncat saat gambar selesai dimuat.
+
+**Tabel yang bisa diakses** — setiap tabel memakai `caption`, `scope="col"` pada header
+kolom, dan `scope="row"` pada header baris:
+
+```html
+<table>
+  <caption>Jadwal imunisasi rutin menurut usia (Kemenkes RI)</caption>
+  <thead>
+    <tr>
+      <th scope="col">Usia</th>
+      <th scope="col">Jenis imunisasi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Kurang dari 24 jam</th>
+      <td data-label="Jenis imunisasi">Hepatitis B (HB-0)</td>
+    </tr>
+    <tr>
+      <th scope="row">2 bulan</th>
+      <td data-label="Jenis imunisasi">DPT-HB-Hib 1, OPV 2, PCV 1, RV 1</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+Atribut `data-label` sengaja ditambahkan agar nama kolom tetap terbaca ketika tabel
+diubah menjadi kartu di layar kecil (dijelaskan pada bagian 5.5).
+
+---
+
+### 5.2 CSS — satu stylesheet, 20 bagian bernomor
+
+Hanya ada **satu file CSS** (`css/style.css`, 936 baris) yang dipanggil semua halaman.
+Isinya dibagi menjadi 20 bagian berkomentar agar mudah dicari:
+
+```
+1. Variabel warna & ukuran   8. Statistik                15. Pita ajakan (CTA)
+2. Reset ringan              9. Gambar dalam konten      16. Footer
+3. Utilitas                 10. Tabel                   17. Kepala halaman dalam
+4. Header & navigasi        11. Kotak catatan           18. Responsif (media query)
+5. Hero                     12. Langkah bernomor        19. Prefers-reduced-motion
+6. Tombol                   13. Daftar centang          20. Cetak (print)
+7. Kartu                    14. Accordion (details)
+```
+
+**Variabel warna** memusatkan seluruh palet di satu tempat, sehingga mengganti tema
+cukup mengubah satu blok:
+
+```css
+:root {
+  --hijau-900: #0a3d2e;
+  --hijau-600: #1a8a68;
+  --hijau-100: #e2f6ee;
+  --kuning:    #f5b301;
+  --teks:      #10241d;
+  --garis:     #d8e6df;
+  --lebar:     1120px;
+  --radius:    16px;
+  --bayang-1:  0 1px 2px rgba(10, 61, 46, .06), 0 6px 18px rgba(10, 61, 46, .06);
+  --transisi:  180ms ease;
+}
+```
+
+**Tipografi adaptif dengan `clamp()`** — satu baris menggantikan tiga media query:
+
+```css
+h1 { font-size: clamp(2rem, 1.35rem + 3.2vw, 3.5rem); font-weight: 800; }
+/* minimum 2rem · ideal mengikuti lebar layar (vw) · maksimum 3.5rem */
+```
+
+Hasil terukur: H1 menjadi **33,6 px di layar 375 px**, **46 px di 768 px**, dan
+**56 px di 1440 px** — tanpa satu pun media query tambahan.
+
+**Reset ringan** memakai `border-box` supaya `padding` tidak menambah lebar elemen:
+
+```css
+*, *::before, *::after { box-sizing: border-box; }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }   /* mencegah gambar gepeng saat lebarnya dibatasi */
+```
+
+---
+
+### 5.3 Navigasi — Flexbox, `aria-current`, dan menu mobile
+
+Header memakai `position: sticky` sehingga menu tetap terlihat saat halaman di-scroll.
+Susunannya adalah **Flexbox** satu baris:
+
+```css
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* logo kiri, menu kanan */
+  gap: 1rem;
+  min-height: 68px;
+}
+```
+
+Halaman aktif ditandai dengan `aria-current="page"` — bukan class terpisah — lalu
+diwarnai lewat selektor atribut. Cara ini membuat penanda aktif terbaca juga oleh
+pembaca layar:
+
+```html
+<li><a href="index.html" aria-current="page">Beranda</a></li>
+```
+
+```css
+.nav-menu a[aria-current="page"] { background: var(--hijau-900); color: #fff; }
+```
+
+**Tombol Menu di layar kecil.** Tombol muncul di bawah 1040 px. Pembungkus `<nav>`
+dibuat `display: contents` agar tidak ikut mengambil ruang Flexbox — tanpa trik ini
+tombol akan meleset dari tepi kanan:
+
+```css
+@media (max-width: 1040px) {
+  .nav-toggle { display: inline-flex; margin-left: auto; order: 2; min-height: 44px; }
+  .situs-header nav { display: contents; }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%; left: 0; right: 0;   /* panel selebar layar di bawah header */
+    flex-direction: column;
+    display: none;
+  }
+  .nav-menu.buka { display: flex; }   /* class .buka ditambahkan oleh JS */
+}
+```
+
+JavaScript 32 baris hanya untuk membuka/menutup panel tersebut, sekaligus menjaga
+atribut `aria-expanded` tetap sinkron dengan kondisi visual:
+
+```js
+tombol.addEventListener('click', function () {
+  var terbuka = menu.classList.toggle('buka');
+  tombol.setAttribute('aria-expanded', terbuka ? 'true' : 'false');
+});
+
+/* tutup otomatis setelah salah satu tautan diklik */
+menu.addEventListener('click', function (e) {
+  if (e.target.closest('a')) {
+    menu.classList.remove('buka');
+    tombol.setAttribute('aria-expanded', 'false');
+  }
+});
+```
+
+Situs tetap bisa dipakai tanpa JavaScript, karena seluruh tautan juga tersedia di
+footer.
+
+---
+
+### 5.4 Flexbox dan Grid — kapan pakai yang mana
+
+**Grid** dipakai untuk tata letak dua dimensi (baris + kolom): hero, kartu, statistik,
+footer. **Flexbox** dipakai untuk susunan satu arah: navbar, tombol, daftar centang.
+
+**Grid otomatis tanpa media query** — `auto-fit` + `minmax` membuat jumlah kolom
+menyesuaikan sendiri:
+
+```css
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); }
+/* lebar < 530px  -> 1 kolom
+   lebar ~768px   -> 2 kolom
+   lebar 1120px   -> 3 kolom */
+```
+
+**Hero dua kolom** dengan proporsi 1,05 : 0,95 supaya sisi teks sedikit lebih lebar:
+
+```css
+.hero-dalam {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(3rem, 6vw, 5rem);
+}
+```
+
+**Statistik bergaris tipis** — trik `gap: 1px` di atas latar abu-abu menghasilkan garis
+pemisah tanpa perlu `border` pada setiap kartu:
+
+```css
+.statistik {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1px;
+  background: var(--garis);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.statistik div { background: var(--putih); padding: 1.5rem 1.25rem; }
+```
+
+**Enam kartu pilar dipaksa 3+3** agar baris kedua tidak menggantung sendirian:
+
+```css
+.grid-pilar { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+@media (min-width: 1000px) {
+  .grid-pilar { grid-template-columns: repeat(3, 1fr); }
+}
+```
+
+**Flexbox untuk tombol** yang otomatis turun baris bila ruang habis:
+
+```css
+.hero-aksi { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+```
+
+---
+
+### 5.5 Media queries — lima titik henti
+
+Semua aturan responsif terkumpul di bagian 18. Titik henti ditentukan dari **kapan tata
+letak mulai rusak**, bukan dari nama perangkat:
+
+| Media query | Alasan batas ini | Yang berubah |
+|---|---|---|
+| `min-width: 1000px` | Di atas lebar ini 3 kolom kartu masih nyaman | Kartu pilar dipaksa 3 kolom (3+3) |
+| `max-width: 1040px` | 7 item menu + logo tidak lagi muat satu baris | Menu jadi tombol, hero & konten jadi 1 kolom, footer 2 kolom |
+| `min-width: 561px` – `max-width: 900px` | 4 kartu statistik akan pecah jadi 3+1 | Statistik jadi 2×2 |
+| `max-width: 700px` | Tabel 5 kolom (halaman Sumber) sudah terlalu sempit | **Tabel berubah menjadi kartu bertumpuk** |
+| `max-width: 560px` | Lebar ponsel umum | Teks 17 px, tombol selebar layar, target sentuh ≥ 44 px |
+
+**Contoh 1 — kolom berubah menjadi satu:**
+
+```css
+@media (max-width: 1040px) {
+  .hero-dalam { grid-template-columns: 1fr; }
+  .hero-gambar { aspect-ratio: 16 / 10; order: -1; }  /* gambar pindah ke atas */
+  .dua-kolom,
+  .dua-kolom-balik { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+```
+
+**Contoh 2 — tabel menjadi kartu (bagian paling menantang).**
+Tabel 4–5 kolom di layar 375 px akan menyisakan kolom selebar ±60 px. Solusinya: ubah
+semua sel menjadi blok, sembunyikan header tabel, lalu tampilkan nama kolom dari atribut
+`data-label` memakai pseudo-element `::before`:
+
+```css
+@media (max-width: 700px) {
+  table { min-width: 0; }
+  table, tbody, tr, th, td { display: block; width: 100%; }
+  thead { display: none; }
+
+  /* caption harus dipaksa block, kalau tidak ia menyusut jadi kolom sempit */
+  caption { display: block; width: 100%; padding: .85rem 1rem; }
+
+  tbody tr { padding: .5rem 0 .95rem; border-top: 1px solid var(--garis); }
+
+  tbody td::before {
+    content: attr(data-label);      /* nama kolom diambil dari atribut HTML */
+    display: block;
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--teks-lembut);
+  }
+}
+```
+
+Dengan begitu, di ponsel tabel tetap terbaca tanpa perlu digeser ke samping:
+
+```
+DEWASA 18-64 TAHUN              <- isi <th scope="row">, jadi judul kartu
+AKTIVITAS AEROBIK               <- dari data-label kolom 2
+150-300 menit per minggu
+INTENSITAS BERAT                <- dari data-label kolom 3
+75-150 menit per minggu
+PENGUATAN OTOT                  <- dari data-label kolom 4
+2 hari atau lebih per minggu
+```
+
+**Contoh 3 — ukuran teks dan target sentuh di ponsel:**
+
+```css
+@media (max-width: 560px) {
+  body { font-size: 1.0625rem; }              /* 16px -> 17px */
+  .nav-toggle { min-height: 44px; }           /* standar target sentuh */
+  .nav-menu a { min-height: 46px; display: flex; align-items: center; }
+  .hero-aksi .tombol { width: 100%; }         /* tombol selebar layar */
+  .situs-footer li a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+```
+
+**Contoh 4 — menghormati preferensi pengguna dan mode cetak:**
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+@media print {
+  .situs-header, .ajakan, .nav-toggle, .situs-footer { display: none; }
+  body { background: #fff; color: #000; }
+  .kartu, .tabel-bungkus { box-shadow: none; border-color: #999; }
+}
+```
+
+**Hasil pengujian pada tiga viewport wajib:**
+
+| Aspek | Desktop 1440 px | Tablet 768 px | Smartphone 375 px |
+|---|---|---|---|
+| Kolom hero | 2 kolom | 1 kolom (gambar di atas) | 1 kolom |
+| Kolom kartu | 3 kolom | 2 kolom | 1 kolom |
+| Statistik | 4 sejajar | 2x2 | 1 kolom |
+| Ukuran gambar | 425-454 px, rasio asli | 711 px, rasio asli | 345 px, rasio asli |
+| Teks dasar | 16 px | 16 px | 17 px |
+| Navigasi | 7 menu horizontal | Tombol Menu 44 px | Tombol Menu 44 px |
+| Tabel | tabel penuh | tabel penuh | kartu bertumpuk |
+| Scroll horizontal | tidak ada | tidak ada | tidak ada |
+
+### 5.6 Aksesibilitas yang sudah diterapkan
+
+| Fitur | Penerapan |
+|---|---|
+| Teks alternatif | `alt` deskriptif pada semua gambar, bukan nama file |
+| Navigasi keyboard | `skip-link`, `:focus-visible` dengan outline 3 px |
+| Penanda halaman aktif | `aria-current="page"` |
+| Tombol menu | `aria-expanded` + `aria-controls` yang diperbarui JavaScript |
+| Struktur judul | Satu `h1` per halaman, tanpa melompati level (h2 ke h3) |
+| Target sentuh | Minimal 44 x 44 px di layar kecil |
+| Kontras warna | Teks gelap `#10241d` di atas latar terang, rasio di atas 7:1 |
+| Gerak minimal | Animasi dinonaktifkan saat `prefers-reduced-motion` aktif |
+
+---
+
+## 6. Struktur Folder
 
 ```
 hidup-sehat-sdg3/
-├── index.html
-├── pola-hidup-sehat.html
-├── gizi-seimbang.html
-├── aktivitas-fisik.html
-├── kesehatan-mental.html
-├── pencegahan-penyakit.html
-├── sumber.html
+├── .gitignore                   # mengecualikan folder preview & file OS
+├── README.md                    # dokumentasi ini
+│
+├── index.html                   # 1. Beranda
+├── pola-hidup-sehat.html        # 2. Pola Hidup Sehat
+├── gizi-seimbang.html           # 3. Gizi Seimbang
+├── aktivitas-fisik.html         # 4. Aktivitas Fisik
+├── kesehatan-mental.html        # 5. Kesehatan Mental
+├── pencegahan-penyakit.html     # 6. Pencegahan Penyakit
+├── sumber.html                  # 7. Sumber & kredit
+│
 ├── css/
-│   └── style.css          ← satu-satunya file CSS (eksternal)
+│   └── style.css                # satu-satunya stylesheet (936 baris)
+│
 ├── js/
-│   └── main.js            ← hanya untuk tombol menu di ponsel
-├── assets/
-│   ├── favicon.svg
-│   └── img/               ← 9 foto, sudah dikompres
-└── README.md
+│   └── main.js                  # 32 baris, hanya untuk menu mobile
+│
+└── assets/
+    ├── favicon.svg              # ikon tab browser (416 byte)
+    └── img/                     # 11 foto, total lebih kurang 1,1 MB
+        ├── hero-beranda.jpg
+        ├── aktivitas-hero.jpg
+        ├── aktivitas-lari.jpg
+        ├── aktivitas-yoga.jpg
+        ├── gizi-hero.jpg
+        ├── gizi-hidrasi.jpg
+        ├── gizi-pasar.jpg
+        ├── minum-air-makan.jpg
+        ├── mental-hero.jpg
+        ├── pencegahan-hero.jpg
+        └── pencegahan-tensi.jpg
 ```
 
-## ✅ Kesesuaian dengan ketentuan tugas
+**Ringkasan jumlah berkas:**
 
-- **Dua link** — versi online (GitHub Pages) dan versi repositori GitHub, keduanya tercantum di atas.
-- **Minimal 5 halaman** — tersedia 7 halaman HTML yang saling terhubung.
-- **Konten sesuai tema SDG 3** — pola hidup sehat, gizi seimbang, aktivitas fisik,
-  kesehatan mental, dan pencegahan penyakit.
-- **Sumber gambar dicantumkan** — nama penerbit dan judul artikel tercantum pada
-  setiap caption gambar dan di halaman `sumber.html` (lihat juga bagian bawah README ini).
-- **HTML + CSS tanpa framework** — semua tata letak dibuat dengan CSS Grid, Flexbox,
-  dan media query sendiri. Tidak ada CDN framework apa pun.
-- **Konten valid** — seluruh 7 halaman lolos **W3C Markup Validation Service**
-  (0 error) dan CSS lolos **W3C CSS Validator** (0 error).
-- **Bisa diakses orang luar** — di-hosting gratis di GitHub Pages (publik).
-- **Statis dan responsive** — diuji pada lebar 390 px (ponsel), 820 px (tablet),
-  dan 1280 px (desktop). Tabel otomatis berubah menjadi kartu bertumpuk di layar kecil.
+| Jenis | Jumlah | Ukuran |
+|---|---|---|
+| Halaman HTML | 7 file | lebih kurang 148 KB (2.402 baris) |
+| Stylesheet | 1 file | 23 KB (936 baris) |
+| JavaScript | 1 file | 1 KB (32 baris) |
+| Gambar | 11 file | lebih kurang 1,1 MB |
+| Ikon | 1 file | 416 byte |
+| Dokumentasi | 2 file | 7 KB |
+| **Total repositori** | **23 file** | **lebih kurang 1,3 MB** |
 
-## 📱 Responsif
+**Alasan penataan ini:**
 
-| Lebar layar | Perilaku |
+- `css/` dan `js/` dipisah karena tugas mensyaratkan **CSS eksternal**, bukan `<style>` di dalam HTML.
+- `assets/img/` menyimpan gambar **secara lokal**, bukan hotlink ke situs lain. Kalau memakai `<img src="https://medistra.com/...">`, gambar akan mati saat situs sumber mengganti atau menghapus berkasnya, dan halaman menjadi lebih lambat.
+- Folder `preview/` (screenshot hasil pengujian) **tidak di-commit** karena hanya dipakai saat menyusun laporan.
+
+---
+
+## 7. URL Website dan Repositori
+
+| Keperluan | URL |
 |---|---|
-| ≤ 560 px | Menu jadi tombol "Menu", tabel jadi kartu bertumpuk, tombol selebar layar |
-| 561–1040 px | Navigasi jadi menu lipat, kolom konten menumpuk satu kolom |
-| > 1040 px | Navigasi horizontal penuh, tata letak dua kolom |
+| **Website (versi online)** | https://lyradelia-commits.github.io/hidup-sehat-sdg3/ |
+| **Repositori GitHub** | https://github.com/lyradelia-commits/hidup-sehat-sdg3 |
+| Halaman Sumber (bukti rujukan) | https://lyradelia-commits.github.io/hidup-sehat-sdg3/sumber.html |
 
-## 🔎 Sumber konten
+Situs di-hosting di **GitHub Pages** (gratis, publik, HTTPS) dan ter-deploy otomatis
+setiap kali ada `push` ke branch `main`.
 
-Angka dan anjuran diambil dari lembaga resmi, lalu ditulis ulang dengan bahasa sendiri:
+**Cara menjalankan secara lokal:** unduh/ekstrak repositori, lalu buka `index.html` di
+browser (klik dua kali). Tidak perlu server, tidak perlu `npm install`, karena semua path
+bersifat relatif dan tidak ada dependensi.
 
-- **WHO** — *Physical activity*, *Healthy diet*, *Salt reduction*, *Noncommunicable
-  diseases*, *Mental disorders*, *Mental health*, *Tobacco*, *Hand hygiene* fact sheets.
-- **Kementerian Kesehatan RI** — Isi Piringku, G4-G1-L5, aktivitas fisik, jadwal
-  imunisasi rutin, kebutuhan tidur, layanan Sehat Jiwa (119 ext. 8).
-- **BKPK Kemenkes** — Survei Kesehatan Indonesia (SKI) 2023.
-- **PBB** — Sustainable Development Goal 3.
+---
 
-Daftar lengkap dengan URL ada di halaman **`sumber.html`**.
+## 8. Referensi Konten dan Aset
 
-## 🖼️ Sumber gambar
+### 8.1 Sumber konten (25 rujukan)
 
-Seluruh foto diambil dari artikel pada situs resmi penerbitnya (bukan dari mesin
-pencari gambar), lalu disimpan ulang ke folder `assets/img/` agar situs tetap
-ringan. Nama penerbit dan judul artikel dicantumkan pada caption di bawah setiap
-foto dan pada tabel kredit di halaman `sumber.html`.
+Angka dan anjuran di situs ini diambil dari publikasi resmi, lalu ditulis ulang dengan
+bahasa sendiri. Daftar yang sama juga tersedia di halaman `sumber.html`.
 
-| Berkas | Judul artikel / halaman asal | Penerbit | Tautan |
+| No | Sumber | Digunakan untuk |
+|---|---|---|
+| 1 | [WHO - Physical activity](https://www.who.int/news-room/fact-sheets/detail/physical-activity) | 150 menit/minggu, 60 menit/hari usia 5-17, data 31% kurang aktif |
+| 2 | [WHO - Healthy diet](https://www.who.int/news-room/fact-sheets/detail/healthy-diet) | 400 g sayur-buah, 25 g serat, gula di bawah 10% energi |
+| 3 | [WHO - Salt reduction](https://www.who.int/news-room/fact-sheets/detail/salt-reduction) | Garam di bawah 5 g/hari (natrium di bawah 2 g) |
+| 4 | [WHO - Noncommunicable diseases](https://www.who.int/news-room/fact-sheets/detail/noncommunicable-diseases) | 43 juta kematian PTM 2021, 18 juta kematian dini |
+| 5 | [WHO - Mental disorders](https://www.who.int/news-room/fact-sheets/detail/mental-disorders) | Hampir 1 dari 7 orang hidup dengan gangguan mental |
+| 6 | [WHO - Mental health](https://www.who.int/news-room/fact-sheets/detail/mental-health-strengthening-our-response) | Definisi kesehatan mental |
+| 7 | [WHO - Tobacco](https://www.who.int/health-topics/tobacco) | 8 juta kematian/tahun, 1,2 juta akibat asap rokok |
+| 8 | [WHO - Hand hygiene](https://www.who.int/teams/integrated-health-services/infection-prevention-control/hand-hygiene) | Durasi cuci tangan 40-60 detik |
+| 9 | [PBB - SDG 3](https://www.un.org/sustainabledevelopment/health/) | Target SDG 3.1 sampai 3.4 |
+| 10 | [Kemenkes - Isi Piringku: Pedoman Makan Kekinian](https://ayosehat.kemkes.go.id/isi-piringku-pedoman-makan-kekinian-orang-indonesia) | Komposisi setengah piring sayur-buah |
+| 11 | [Kemenkes - Isi Piringku, Kebutuhan Gizi Seimbang Harian](https://ayosehat.kemkes.go.id/isi-piringku-kebutuhan-gizi-harian-seimbang) | Konsep gizi seimbang |
+| 12 | [Kemenkes - Batasi Gula Garam Lemak (G4-G1-L5)](https://ayosehat.kemkes.go.id/batasi-asupan-gula-garam-dan-lemak-biar-kamu-makin-keren) | Gula 4 sdm, garam 1 sdt, lemak 5 sdm |
+| 13 | [Kemenkes - Aktivitas Fisik Rutin Cegah Hipertensi, Diabetes, Kolesterol](https://www.kemkes.go.id/id/aktivitas-fisik-rutin-cegah-hipertensi-diabetes-dan-kolesterol-tinggi) | Anjuran 30 menit lima hari seminggu |
+| 14 | [BKPK Kemenkes - Aktifitas Fisik Penduduk Indonesia](https://www.badankebijakan.kemkes.go.id/aktifitas-fisik-penduduk-indonesia/) | Anjuran WHO 150-300 menit usia 18-64 |
+| 15 | [BKPK Kemenkes - Kurang Bergerak, Ancaman Tersembunyi](https://www.badankebijakan.kemkes.go.id/kurang-bergerak-ancaman-tersembunyi-kesehatan-indonesia/) | SKI 2023: 37,4% penduduk usia 10 tahun ke atas kurang aktif |
+| 16 | [Kemenkes - Pekan Imunisasi Dunia 2025](https://www.kemkes.go.id/id/pekan-imunisasi-dunia-2025-ayo-lengkapi-imunisasi-untuk-generasi-sehat-menuju-indonesia-emas) | Jadwal imunisasi rutin lengkap |
+| 17 | [Kemenkes - 6 Langkah Cuci Tangan Pakai Sabun](https://ayosehat.kemkes.go.id/6-langkah-cuci-tangan-pakai-sabun) | Enam langkah CTPS |
+| 18 | [Kemenkes - Lama Waktu Tidur yang Dibutuhkan Tubuh](https://upk.kemkes.go.id/new/lama-waktu-tidur-yang-dibutuhkan-oleh-tubuh) | Kebutuhan tidur per usia |
+| 19 | [Kemenkes - Penting Tidur Berkualitas](https://keslan.kemkes.go.id/read/2539/penting-tidur-berkualitas-jaga-kesehatan-fisik-dan-mental) | Dewasa 7-9 jam, remaja 8-10 jam |
+| 20 | [Medistra - Pola Makan Sehat: Kunci Mencegah Penyakit](https://medistra.com/article/pola-makan-sehat-kunci-mencegah-penyakit-dan-meningkatkan-kualitas-hidup) | Rujukan tambahan pola makan sehat |
+| 21 | [Fithub - Jogging: Artinya dan Cara Melakukannya](https://fithub.id/blog/jogging-artinya) | Rujukan tambahan jogging |
+| 22 | [ANTARA Sulteng - Gizi Seimbang pada Penderita Anemia](https://sulteng.antaranews.com/berita/177984/pakar-gizi-ingatkan-perlunya-gizi-seimbang-pada-penderita-anemia) | Rujukan tambahan gizi seimbang |
+| 23 | [detikcom - Hari Lari Sedunia](https://news.detik.com/berita/d-6759293/hari-lari-sedunia-7-juni-yuk-simak-manfaat-berlari) | Manfaat berlari |
+| 24 | [Halodoc - 4 Gangguan Mental yang Terjadi Tanpa Disadari](https://www.halodoc.com/artikel/4-gangguan-mental-yang-terjadi-tanpa-disadari) | Rujukan tambahan kesehatan mental |
+| 25 | [Kemenkes - FAQ Layanan Healing119](https://kesprimkom.kemkes.go.id/assets/uploads/contents/others/FAQ_Cegah_Bunuh_Diri,_Dukung_Kesehatan_Jiwa__Kenali_Layanan_Healing119.id.pdf) | Layanan konseling 119 ekstensi 8 |
+
+> **Catatan:** empat tautan `ayosehat.kemkes.go.id` di atas sempat mengembalikan
+> status 503 karena situs Kemenkes sedang dalam pemeliharaan. URL-nya tetap
+> dicantumkan karena itu alamat resmi artikel tersebut; bila sedang tidak bisa
+> dibuka, materi yang sama bisa dicek lewat `kemkes.go.id`.
+
+### 8.2 Aset gambar (11 foto)
+
+Seluruh foto diambil dari **artikel pada situs resmi penerbitnya**, bukan dari mesin
+pencari gambar, lalu disimpan ulang ke `assets/img/` agar situs tetap ringan dan tidak
+bergantung pada server pihak lain. Nama penerbit dan judul artikel juga dicantumkan pada
+caption di bawah setiap foto.
+
+| Berkas lokal | Judul artikel asal | Penerbit | Tautan |
 |---|---|---|---|
-| `hero-beranda.jpg` | Pola Makan Sehat: Kunci Mencegah Penyakit dan Meningkatkan Kualitas Hidup | Medistra Hospital | https://medistra.com/article/pola-makan-sehat-kunci-mencegah-penyakit-dan-meningkatkan-kualitas-hidup |
-| `aktivitas-hero.jpg` | Jogging: Artinya Apa dan Bagaimana Cara Melakukannya | Fithub Indonesia | https://fithub.id/blog/jogging-artinya |
-| `gizi-hidrasi.jpg` | Jangan Remehkan Manfaat Air Putih | Alodokter | https://www.alodokter.com/jangan-remehkan-manfaat-air-putih |
-| `gizi-pasar.jpg` | Tips dan Trik Memilih Buah dan Sayuran di Pasar Tradisional | Jurnalpost | https://jurnalpost.com/tips-dan-trik-memilih-buah-dan-sayuran-di-pasar-tradisional/89125/ |
-| `gizi-hero.jpg` | Pakar Gizi Ingatkan Perlunya Gizi Seimbang pada Penderita Anemia | ANTARA News Sulawesi Tengah | https://sulteng.antaranews.com/berita/177984/pakar-gizi-ingatkan-perlunya-gizi-seimbang-pada-penderita-anemia |
-| `minum-air-makan.jpg` | Kenapa Harus Minum Air Putih Setelah Makan? | Cleopure Water | https://cleopurewater.com/blog/kesehatan/kenapa-harus-minum-air-putih-setelah-makan/ |
-| `aktivitas-lari.jpg` | Hari Lari Sedunia 7 Juni, Yuk Simak Manfaat Berlari | detikcom | https://news.detik.com/berita/d-6759293/hari-lari-sedunia-7-juni-yuk-simak-manfaat-berlari |
-| `aktivitas-yoga.jpg` | Jenis-jenis Yoga yang Baik bagi Tubuh | KlikDokter | https://www.klikdokter.com/gaya-hidup/sehat-bugar/jenis-jenis-yoga-yang-baik-bagi-tubuh |
-| `mental-hero.jpg` | 4 Gangguan Mental yang Terjadi Tanpa Disadari | Halodoc | https://www.halodoc.com/artikel/4-gangguan-mental-yang-terjadi-tanpa-disadari |
-| `pencegahan-hero.jpg` | Cuci Tangan Pakai Sabun: Kebiasaan Sederhana untuk Mencegah Penyebaran Penyakit | Farmasi UMMADA | https://farmasi.ummada.ac.id/2026/08/10/cuci-tangan-pakai-sabun-kebiasaan-sederhana-untuk-mencegah-penyebaran-penyakit/ |
-| `pencegahan-tensi.jpg` | Berapa Tekanan Darah Normal Orang Dewasa? | Alodokter | https://www.alodokter.com/berapa-tekanan-darah-normal-orang-dewasa |
+| `hero-beranda.jpg` | Pola Makan Sehat: Kunci Mencegah Penyakit dan Meningkatkan Kualitas Hidup | Medistra Hospital | [medistra.com](https://medistra.com/article/pola-makan-sehat-kunci-mencegah-penyakit-dan-meningkatkan-kualitas-hidup) |
+| `aktivitas-hero.jpg` | Jogging: Artinya Apa dan Bagaimana Cara Melakukannya | Fithub Indonesia | [fithub.id](https://fithub.id/blog/jogging-artinya) |
+| `gizi-hidrasi.jpg` | Jangan Remehkan Manfaat Air Putih | Alodokter | [alodokter.com](https://www.alodokter.com/jangan-remehkan-manfaat-air-putih) |
+| `gizi-pasar.jpg` | Tips dan Trik Memilih Buah dan Sayuran di Pasar Tradisional | Jurnalpost | [jurnalpost.com](https://jurnalpost.com/tips-dan-trik-memilih-buah-dan-sayuran-di-pasar-tradisional/89125/) |
+| `gizi-hero.jpg` | Pakar Gizi Ingatkan Perlunya Gizi Seimbang pada Penderita Anemia | ANTARA News Sulawesi Tengah | [antaranews.com](https://sulteng.antaranews.com/berita/177984/pakar-gizi-ingatkan-perlunya-gizi-seimbang-pada-penderita-anemia) |
+| `minum-air-makan.jpg` | Kenapa Harus Minum Air Putih Setelah Makan? | Cleopure Water | [cleopurewater.com](https://cleopurewater.com/blog/kesehatan/kenapa-harus-minum-air-putih-setelah-makan/) |
+| `aktivitas-lari.jpg` | Hari Lari Sedunia 7 Juni, Yuk Simak Manfaat Berlari | detikcom | [news.detik.com](https://news.detik.com/berita/d-6759293/hari-lari-sedunia-7-juni-yuk-simak-manfaat-berlari) |
+| `aktivitas-yoga.jpg` | Jenis-jenis Yoga yang Baik bagi Tubuh | KlikDokter | [klikdokter.com](https://www.klikdokter.com/gaya-hidup/sehat-bugar/jenis-jenis-yoga-yang-baik-bagi-tubuh) |
+| `mental-hero.jpg` | 4 Gangguan Mental yang Terjadi Tanpa Disadari | Halodoc | [halodoc.com](https://www.halodoc.com/artikel/4-gangguan-mental-yang-terjadi-tanpa-disadari) |
+| `pencegahan-hero.jpg` | Cuci Tangan Pakai Sabun: Kebiasaan Sederhana untuk Mencegah Penyebaran Penyakit | Farmasi UMMADA | [farmasi.ummada.ac.id](https://farmasi.ummada.ac.id/2026/08/10/cuci-tangan-pakai-sabun-kebiasaan-sederhana-untuk-mencegah-penyebaran-penyakit/) |
+| `pencegahan-tensi.jpg` | Berapa Tekanan Darah Normal Orang Dewasa? | Alodokter | [alodokter.com](https://www.alodokter.com/berapa-tekanan-darah-normal-orang-dewasa) |
 
-Gambar hanya disesuaikan ukuran dan kompresinya agar cepat dimuat; isi foto tidak
-diubah. Kredit selalu dicantumkan sebagai bentuk kejujuran akademik.
+Gambar hanya disesuaikan **ukuran dan kompresinya** (maksimal 1400 px, kualitas 85); isi
+foto tidak diubah atau diedit ulang. Kredit dicantumkan sebagai bentuk kejujuran akademik
+dan agar sumbernya dapat diverifikasi.
 
-Font **Plus Jakarta Sans** dimuat dari Google Fonts dengan lisensi SIL Open Font License 1.1.
+### 8.3 Aset lain
 
-## 🚀 Menjalankan secara lokal
+| Aset | Sumber | Lisensi |
+|---|---|---|
+| Font **Plus Jakarta Sans** | [Google Fonts](https://fonts.google.com/specimen/Plus+Jakarta+Sans) | SIL Open Font License 1.1 |
+| Ikon navigasi & antarmuka | Dibuat sendiri sebagai SVG inline | Ikut lisensi proyek ini |
+| `favicon.svg` | Dibuat sendiri (SVG manual) | Ikut lisensi proyek ini |
 
-Cukup buka `index.html` di browser (klik dua kali). Semua path bersifat relatif,
-jadi folder ini bisa dipindah atau di-zip tanpa merusak tampilan.
+---
 
-## ⚠️ Catatan
+## Catatan Tambahan
 
-Situs ini bersifat edukatif untuk masyarakat umum, **bukan pengganti konsultasi
-medis**. Untuk keluhan kesehatan, hubungi fasilitas kesehatan terdekat.
-Layanan konseling kesehatan jiwa Kemenkes: **119 ekstensi 8**.
+**Hasil validasi:** seluruh 7 halaman lolos **Nu HTML Checker** (`vnu.jar` — engine yang
+sama dengan validator.w3.org) dengan **0 error**, dan `css/style.css` lolos **W3C CSS
+Validator** dengan **0 error**.
+
+**Situs ini bersifat edukatif** untuk masyarakat umum dan **bukan pengganti konsultasi
+medis**. Untuk keluhan kesehatan, hubungi fasilitas kesehatan terdekat. Layanan konseling
+kesehatan jiwa Kementerian Kesehatan RI: **119 ekstensi 8**.
