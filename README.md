@@ -101,145 +101,68 @@ SASS/SCSS, maupun build tool apa pun. Total ada **0 dependensi** — cukup buka
 
 ## 5. Penjelasan Penting dari Implementasi
 
-### 5.1 HTML — struktur semantik dan aksesibilitas
+Lima hal yang diminta — HTML, CSS, navigasi, Flexbox/Grid, dan media queries — masing-masing
+satu paragraf penjelasan + satu contoh kode yang benar-benar dipakai di proyek.
 
-Setiap halaman memakai kerangka yang sama: `head` → `header` (logo + navigasi) →
-`main` (isi) → `footer` → satu baris `script`.
+### 5.1 HTML — semantik dan struktur halaman
+
+Semua halaman memakai kerangka yang sama: `header` (logo + navigasi) → `main` (isi) →
+`footer`. Tiga baris berikut wajib ada dan punya alasan masing-masing:
 
 ```html
-<!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hidup Sehat — Edukasi Kesehatan Masyarakat | SDG 3</title>
-  <meta name="description" content="Situs edukasi kesehatan masyarakat sesuai SDG 3 ...">
-  <meta name="author" content="Kadek Lyradelia Pracili">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <!-- tautan untuk pengguna keyboard: lompat langsung ke konten -->
-  <a class="skip-link" href="#konten-utama">Lewati ke konten utama</a>
-  <header class="situs-header"> ... </header>
-  <main id="konten-utama">
-    <section class="hero"> ... </section>
-  </main>
-  <footer class="situs-footer"> ... </footer>
-  <script src="js/main.js"></script>
-</body>
-</html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
 ```
 
-Poin penting:
+`lang="id"` agar pembaca layar memakai pelafalan Indonesia. `viewport` adalah syarat
+agar media query bekerja di ponsel — tanpa baris ini halaman dirender selebar ±980 px
+lalu dikecilkan, sehingga semua teks terlihat kecil. CSS ditaruh di file eksternal
+karena itu yang disyaratkan tugas.
 
-- `lang="id"` supaya pembaca layar memakai pelafalan bahasa Indonesia.
-- `meta viewport` adalah **syarat mutlak** agar media query bekerja di ponsel. Tanpa baris ini, halaman dirender selebar ±980 px lalu diperkecil, sehingga teks terlihat kecil.
-- `skip-link` tersembunyi (`left: -9999px`) dan baru muncul saat difokuskan dengan tombol Tab.
-- Gambar selalu punya `alt` deskriptif serta `width` + `height` agar tata letak tidak meloncat saat gambar selesai dimuat.
-
-**Tabel yang bisa diakses** — setiap tabel memakai `caption`, `scope="col"` pada header
-kolom, dan `scope="row"` pada header baris:
+Tabel diberi `caption` + `scope` supaya terbaca sebagai tabel oleh pembaca layar:
 
 ```html
 <table>
-  <caption>Jadwal imunisasi rutin menurut usia (Kemenkes RI)</caption>
-  <thead>
-    <tr>
-      <th scope="col">Usia</th>
-      <th scope="col">Jenis imunisasi</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Kurang dari 24 jam</th>
-      <td data-label="Jenis imunisasi">Hepatitis B (HB-0)</td>
-    </tr>
-    <tr>
-      <th scope="row">2 bulan</th>
-      <td data-label="Jenis imunisasi">DPT-HB-Hib 1, OPV 2, PCV 1, RV 1</td>
-    </tr>
-  </tbody>
+  <caption>Jadwal imunisasi rutin (Kemenkes RI)</caption>
+  <thead><tr><th scope="col">Usia</th><th scope="col">Imunisasi</th></tr></thead>
+  <tbody><tr><th scope="row">2 bulan</th><td data-label="Imunisasi">DPT-HB-Hib 1</td></tr></tbody>
 </table>
 ```
 
-Atribut `data-label` sengaja ditambahkan agar nama kolom tetap terbaca ketika tabel
-diubah menjadi kartu di layar kecil (dijelaskan pada bagian 5.5).
+Atribut `data-label` bukan atribut standar HTML — dipakai CSS pada bagian 5.5 untuk
+menampilkan nama kolom ketika tabel berubah menjadi kartu di layar kecil.
 
----
+### 5.2 CSS — satu file, variabel, dan teks adaptif
 
-### 5.2 CSS — satu stylesheet, 20 bagian bernomor
-
-Hanya ada **satu file CSS** (`css/style.css`, 936 baris) yang dipanggil semua halaman.
-Isinya dibagi menjadi 20 bagian berkomentar agar mudah dicari:
-
-```
-1. Variabel warna & ukuran   8. Statistik                15. Pita ajakan (CTA)
-2. Reset ringan              9. Gambar dalam konten      16. Footer
-3. Utilitas                 10. Tabel                   17. Kepala halaman dalam
-4. Header & navigasi        11. Kotak catatan           18. Responsif (media query)
-5. Hero                     12. Langkah bernomor        19. Prefers-reduced-motion
-6. Tombol                   13. Daftar centang          20. Cetak (print)
-7. Kartu                    14. Accordion (details)
-```
-
-**Variabel warna** memusatkan seluruh palet di satu tempat, sehingga mengganti tema
-cukup mengubah satu blok:
+Seluruh 7 halaman memakai satu file `css/style.css` (936 baris, dibagi 20 bagian
+berkomentar). Warna dan ukuran disimpan sebagai variabel agar tema bisa diubah dari
+satu tempat, dan ukuran judul memakai `clamp()` sehingga tidak perlu media query:
 
 ```css
-:root {
-  --hijau-900: #0a3d2e;
-  --hijau-600: #1a8a68;
-  --hijau-100: #e2f6ee;
-  --kuning:    #f5b301;
-  --teks:      #10241d;
-  --garis:     #d8e6df;
-  --lebar:     1120px;
-  --radius:    16px;
-  --bayang-1:  0 1px 2px rgba(10, 61, 46, .06), 0 6px 18px rgba(10, 61, 46, .06);
-  --transisi:  180ms ease;
-}
+:root { --hijau-700: #146c52; --garis: #d8e6df; --radius: 16px; --lebar: 1120px; }
+
+/* minimum 2rem · mengikuti lebar layar · maksimum 3.5rem */
+h1 { font-size: clamp(2rem, 1.35rem + 3.2vw, 3.5rem); }
+
+.container { width: min(100% - 2.5rem, var(--lebar)); margin-inline: auto; }
 ```
 
-**Tipografi adaptif dengan `clamp()`** — satu baris menggantikan tiga media query:
+Hasil terukur: H1 menjadi **33,6 px di 375 px**, **46 px di 768 px**, dan **56 px di
+1440 px** — tanpa satu pun media query tambahan.
+
+### 5.3 Navigasi — Flexbox dan penanda halaman aktif
+
+Header memakai `position: sticky` agar menu tetap terlihat saat di-scroll, dengan
+susunan Flexbox satu baris:
 
 ```css
-h1 { font-size: clamp(2rem, 1.35rem + 3.2vw, 3.5rem); font-weight: 800; }
-/* minimum 2rem · ideal mengikuti lebar layar (vw) · maksimum 3.5rem */
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 ```
 
-Hasil terukur: H1 menjadi **33,6 px di layar 375 px**, **46 px di 768 px**, dan
-**56 px di 1440 px** — tanpa satu pun media query tambahan.
-
-**Reset ringan** memakai `border-box` supaya `padding` tidak menambah lebar elemen:
-
-```css
-*, *::before, *::after { box-sizing: border-box; }
-img, svg { display: block; max-width: 100%; }
-img { height: auto; }   /* mencegah gambar gepeng saat lebarnya dibatasi */
-```
-
----
-
-### 5.3 Navigasi — Flexbox, `aria-current`, dan menu mobile
-
-Header memakai `position: sticky` sehingga menu tetap terlihat saat halaman di-scroll.
-Susunannya adalah **Flexbox** satu baris:
-
-```css
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;  /* logo kiri, menu kanan */
-  gap: 1rem;
-  min-height: 68px;
-}
-```
-
-Halaman aktif ditandai dengan `aria-current="page"` — bukan class terpisah — lalu
-diwarnai lewat selektor atribut. Cara ini membuat penanda aktif terbaca juga oleh
-pembaca layar:
+Halaman aktif ditandai dengan `aria-current="page"` (atribut, bukan class), lalu
+diwarnai lewat selektor atribut. Cara ini membuat penanda aktif juga terbaca pembaca
+layar, bukan sekadar berbeda warna:
 
 ```html
 <li><a href="index.html" aria-current="page">Beranda</a></li>
@@ -249,228 +172,100 @@ pembaca layar:
 .nav-menu a[aria-current="page"] { background: var(--hijau-900); color: #fff; }
 ```
 
-**Tombol Menu di layar kecil.** Tombol muncul di bawah 1040 px. Pembungkus `<nav>`
-dibuat `display: contents` agar tidak ikut mengambil ruang Flexbox — tanpa trik ini
-tombol akan meleset dari tepi kanan:
+Di bawah 1040 px tujuh item menu tidak muat lagi, sehingga diganti tombol:
 
 ```css
 @media (max-width: 1040px) {
-  .nav-toggle { display: inline-flex; margin-left: auto; order: 2; min-height: 44px; }
-  .situs-header nav { display: contents; }
-
-  .nav-menu {
-    position: absolute;
-    top: 100%; left: 0; right: 0;   /* panel selebar layar di bawah header */
-    flex-direction: column;
-    display: none;
-  }
-  .nav-menu.buka { display: flex; }   /* class .buka ditambahkan oleh JS */
+  .nav-toggle { display: inline-flex; margin-left: auto; min-height: 44px; }
+  .situs-header nav { display: contents; }   /* agar tombol menempel ke kanan */
+  .nav-menu { position: absolute; top: 100%; left: 0; right: 0; display: none; }
+  .nav-menu.buka { display: flex; }
 }
 ```
 
-JavaScript 32 baris hanya untuk membuka/menutup panel tersebut, sekaligus menjaga
-atribut `aria-expanded` tetap sinkron dengan kondisi visual:
+JavaScript hanya 32 baris untuk menambah/hapus class `.buka` dan menjaga atribut
+`aria-expanded`. Situs tetap bisa dipakai tanpa JavaScript karena seluruh tautan juga
+tersedia di footer.
 
-```js
-tombol.addEventListener('click', function () {
-  var terbuka = menu.classList.toggle('buka');
-  tombol.setAttribute('aria-expanded', terbuka ? 'true' : 'false');
-});
+### 5.4 Flexbox dan Grid — pembagian tugasnya
 
-/* tutup otomatis setelah salah satu tautan diklik */
-menu.addEventListener('click', function (e) {
-  if (e.target.closest('a')) {
-    menu.classList.remove('buka');
-    tombol.setAttribute('aria-expanded', 'false');
-  }
-});
-```
-
-Situs tetap bisa dipakai tanpa JavaScript, karena seluruh tautan juga tersedia di
-footer.
-
----
-
-### 5.4 Flexbox dan Grid — kapan pakai yang mana
-
-**Grid** dipakai untuk tata letak dua dimensi (baris + kolom): hero, kartu, statistik,
-footer. **Flexbox** dipakai untuk susunan satu arah: navbar, tombol, daftar centang.
-
-**Grid otomatis tanpa media query** — `auto-fit` + `minmax` membuat jumlah kolom
-menyesuaikan sendiri:
+**Grid** untuk tata letak dua dimensi (hero, kartu, statistik, footer). **Flexbox**
+untuk susunan satu arah (navbar, tombol, daftar centang).
 
 ```css
+/* Grid: jumlah kolom menyesuaikan sendiri, 1 -> 2 -> 3 */
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); }
-/* lebar < 530px  -> 1 kolom
-   lebar ~768px   -> 2 kolom
-   lebar 1120px   -> 3 kolom */
+
+/* Grid dua kolom dengan proporsi 1.05 : 0.95 supaya sisi teks lebih lebar */
+.hero-dalam { display: grid; grid-template-columns: 1.05fr .95fr; gap: 2rem; }
+
+/* Flexbox: tombol otomatis turun baris kalau ruang habis */
+.hero-aksi { display: flex; flex-wrap: wrap; gap: .75rem; }
 ```
 
-**Hero dua kolom** dengan proporsi 1,05 : 0,95 supaya sisi teks sedikit lebih lebar:
-
-```css
-.hero-dalam {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap: clamp(2rem, 4vw, 3.5rem);
-  align-items: center;
-  padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(3rem, 6vw, 5rem);
-}
-```
-
-**Statistik bergaris tipis** — trik `gap: 1px` di atas latar abu-abu menghasilkan garis
-pemisah tanpa perlu `border` pada setiap kartu:
-
-```css
-.statistik {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 1px;
-  background: var(--garis);
-  border: 1px solid var(--garis);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-.statistik div { background: var(--putih); padding: 1.5rem 1.25rem; }
-```
-
-**Enam kartu pilar dipaksa 3+3** agar baris kedua tidak menggantung sendirian:
-
-```css
-.grid-pilar { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
-@media (min-width: 1000px) {
-  .grid-pilar { grid-template-columns: repeat(3, 1fr); }
-}
-```
-
-**Flexbox untuk tombol** yang otomatis turun baris bila ruang habis:
-
-```css
-.hero-aksi { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
-```
-
----
+Satu baris `auto-fit` + `minmax` di atas menggantikan dua media query, karena jumlah
+kolom dihitung sendiri oleh browser.
 
 ### 5.5 Media queries — lima titik henti
 
-Semua aturan responsif terkumpul di bagian 18. Titik henti ditentukan dari **kapan tata
-letak mulai rusak**, bukan dari nama perangkat:
+Titik henti ditentukan dari **kapan tata letak mulai rusak**, bukan dari nama perangkat:
 
-| Media query | Alasan batas ini | Yang berubah |
+| Media query | Alasan batasnya | Yang berubah |
 |---|---|---|
-| `min-width: 1000px` | Di atas lebar ini 3 kolom kartu masih nyaman | Kartu pilar dipaksa 3 kolom (3+3) |
-| `max-width: 1040px` | 7 item menu + logo tidak lagi muat satu baris | Menu jadi tombol, hero & konten jadi 1 kolom, footer 2 kolom |
-| `min-width: 561px` – `max-width: 900px` | 4 kartu statistik akan pecah jadi 3+1 | Statistik jadi 2×2 |
-| `max-width: 700px` | Tabel 5 kolom (halaman Sumber) sudah terlalu sempit | **Tabel berubah menjadi kartu bertumpuk** |
-| `max-width: 560px` | Lebar ponsel umum | Teks 17 px, tombol selebar layar, target sentuh ≥ 44 px |
+| `min-width: 1000px` | 3 kolom kartu masih nyaman di atas lebar ini | Kartu pilar dipaksa 3+3, tidak menggantung |
+| `max-width: 1040px` | 7 menu + logo tidak muat satu baris | Menu jadi tombol, hero & konten jadi 1 kolom |
+| `min-width: 561px` – `max-width: 900px` | 4 kartu statistik pecah jadi 3+1 | Statistik jadi 2×2 |
+| `max-width: 700px` | Tabel 5 kolom sudah terlalu sempit | **Tabel jadi kartu bertumpuk** |
+| `max-width: 560px` | Lebar ponsel umum | Teks 17 px, tombol selebar layar, target sentuh 44 px |
 
-**Contoh 1 — kolom berubah menjadi satu:**
-
-```css
-@media (max-width: 1040px) {
-  .hero-dalam { grid-template-columns: 1fr; }
-  .hero-gambar { aspect-ratio: 16 / 10; order: -1; }  /* gambar pindah ke atas */
-  .dua-kolom,
-  .dua-kolom-balik { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-```
-
-**Contoh 2 — tabel menjadi kartu (bagian paling menantang).**
-Tabel 4–5 kolom di layar 375 px akan menyisakan kolom selebar ±60 px. Solusinya: ubah
-semua sel menjadi blok, sembunyikan header tabel, lalu tampilkan nama kolom dari atribut
-`data-label` memakai pseudo-element `::before`:
+Bagian tersulit adalah tabel. Tabel 4–5 kolom di layar 375 px hanya menyisakan ±60 px
+per kolom, jadi sel diubah menjadi blok dan nama kolom ditampilkan dari `data-label`:
 
 ```css
 @media (max-width: 700px) {
-  table { min-width: 0; }
   table, tbody, tr, th, td { display: block; width: 100%; }
-  thead { display: none; }
-
-  /* caption harus dipaksa block, kalau tidak ia menyusut jadi kolom sempit */
-  caption { display: block; width: 100%; padding: .85rem 1rem; }
-
-  tbody tr { padding: .5rem 0 .95rem; border-top: 1px solid var(--garis); }
+  thead { display: none; }                    /* header tabel disembunyikan */
+  caption { display: block; width: 100%; }    /* kalau tidak, caption menyusut */
 
   tbody td::before {
-    content: attr(data-label);      /* nama kolom diambil dari atribut HTML */
+    content: attr(data-label);                /* nama kolom dari atribut HTML */
     display: block;
     font-size: .75rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: .06em;
     color: var(--teks-lembut);
   }
 }
 ```
 
-Dengan begitu, di ponsel tabel tetap terbaca tanpa perlu digeser ke samping:
+Hasilnya di ponsel tabel tetap terbaca tanpa perlu digeser ke samping:
 
 ```
-DEWASA 18-64 TAHUN              <- isi <th scope="row">, jadi judul kartu
-AKTIVITAS AEROBIK               <- dari data-label kolom 2
+DEWASA 18-64 TAHUN          <- isi <th scope="row">, jadi judul kartu
+AKTIVITAS AEROBIK           <- dari data-label kolom 2
 150-300 menit per minggu
-INTENSITAS BERAT                <- dari data-label kolom 3
+INTENSITAS BERAT            <- dari data-label kolom 3
 75-150 menit per minggu
-PENGUATAN OTOT                  <- dari data-label kolom 4
-2 hari atau lebih per minggu
 ```
 
-**Contoh 3 — ukuran teks dan target sentuh di ponsel:**
-
-```css
-@media (max-width: 560px) {
-  body { font-size: 1.0625rem; }              /* 16px -> 17px */
-  .nav-toggle { min-height: 44px; }           /* standar target sentuh */
-  .nav-menu a { min-height: 46px; display: flex; align-items: center; }
-  .hero-aksi .tombol { width: 100%; }         /* tombol selebar layar */
-  .situs-footer li a { display: inline-flex; align-items: center; min-height: 44px; }
-}
-```
-
-**Contoh 4 — menghormati preferensi pengguna dan mode cetak:**
-
-```css
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
-}
-
-@media print {
-  .situs-header, .ajakan, .nav-toggle, .situs-footer { display: none; }
-  body { background: #fff; color: #000; }
-  .kartu, .tabel-bungkus { box-shadow: none; border-color: #999; }
-}
-```
-
-**Hasil pengujian pada tiga viewport wajib:**
+**Hasil pengujian di tiga viewport:**
 
 | Aspek | Desktop 1440 px | Tablet 768 px | Smartphone 375 px |
 |---|---|---|---|
-| Kolom hero | 2 kolom | 1 kolom (gambar di atas) | 1 kolom |
-| Kolom kartu | 3 kolom | 2 kolom | 1 kolom |
-| Statistik | 4 sejajar | 2x2 | 1 kolom |
-| Ukuran gambar | 425-454 px, rasio asli | 711 px, rasio asli | 345 px, rasio asli |
+| Kolom konten | 2 kolom | 1 kolom | 1 kolom |
+| Kartu | 3 kolom | 2 kolom | 1 kolom |
 | Teks dasar | 16 px | 16 px | 17 px |
 | Navigasi | 7 menu horizontal | Tombol Menu 44 px | Tombol Menu 44 px |
 | Tabel | tabel penuh | tabel penuh | kartu bertumpuk |
 | Scroll horizontal | tidak ada | tidak ada | tidak ada |
 
-### 5.6 Aksesibilitas yang sudah diterapkan
+### 5.6 Aksesibilitas (ringkas)
 
-| Fitur | Penerapan |
-|---|---|
-| Teks alternatif | `alt` deskriptif pada semua gambar, bukan nama file |
-| Navigasi keyboard | `skip-link`, `:focus-visible` dengan outline 3 px |
-| Penanda halaman aktif | `aria-current="page"` |
-| Tombol menu | `aria-expanded` + `aria-controls` yang diperbarui JavaScript |
-| Struktur judul | Satu `h1` per halaman, tanpa melompati level (h2 ke h3) |
-| Target sentuh | Minimal 44 x 44 px di layar kecil |
-| Kontras warna | Teks gelap `#10241d` di atas latar terang, rasio di atas 7:1 |
-| Gerak minimal | Animasi dinonaktifkan saat `prefers-reduced-motion` aktif |
+- `alt` deskriptif pada semua gambar, `skip-link` untuk pengguna keyboard, dan
+  `:focus-visible` dengan outline 3 px.
+- `aria-current`, `aria-expanded`, dan `aria-controls` pada navigasi.
+- Satu `h1` per halaman tanpa melompati level heading.
+- Target sentuh minimal 44 px dan animasi dimatikan saat `prefers-reduced-motion`.
 
 ---
 
