@@ -317,7 +317,8 @@ li { margin-bottom: .45em; }
   position: absolute;
   left: 0; right: 0; bottom: 0;
   padding: 2.5rem 1rem .7rem;
-  font-size: .7rem;
+  font-size: .78rem;
+  line-height: 1.4;
   color: rgba(255, 255, 255, .92);
   background: linear-gradient(to top, rgba(6, 40, 31, .78), rgba(6, 40, 31, 0));
 }
@@ -793,7 +794,7 @@ summary:hover { background: var(--hijau-50); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid > div:first-child { grid-column: 1 / -1; }
 
-  .nav-toggle { display: inline-flex; margin-left: auto; order: 2; }
+  .nav-toggle { display: inline-flex; margin-left: auto; order: 2; min-height: 44px; }
 
   /* pembungkus <nav> tidak lagi ikut flex supaya tombol Menu rata kanan */
   .situs-header nav { display: contents; }
@@ -818,6 +819,11 @@ summary:hover { background: var(--hijau-50); }
 
   /* di tablet, judul baris tabel boleh turun baris supaya tidak melebar */
   tbody th { white-space: normal; }
+}
+
+/* Statistik 4 kartu: di tablet pakai 2x2 supaya tidak jadi 3+1 menggantung. */
+@media (min-width: 561px) and (max-width: 900px) {
+  .statistik { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Tabel berubah jadi kartu bertumpuk di layar sempit (ponsel & tablet kecil).
@@ -900,11 +906,13 @@ summary:hover { background: var(--hijau-50); }
   .footer-bawah { font-size: .875rem; }
 
   /* target sentuh nyaman: minimal 44px tinggi */
+  .nav-toggle { min-height: 44px; }
   .nav-menu a { min-height: 46px; display: flex; align-items: center; }
   .kartu a.tautan-kartu { min-height: 44px; align-items: center; }
   tbody td a { min-height: 44px; display: inline-flex; align-items: center; }
   summary { min-height: 48px; }
-  .situs-footer li a { display: inline-block; padding: .35rem 0; min-height: 32px; }
+  .situs-footer li a { display: inline-flex; align-items: center; padding: .3rem 0; min-height: 44px; }
+  .remah a { display: inline-flex; align-items: center; min-height: 36px; padding: .1rem 0; }
   .footer-grid li { margin-bottom: .15rem; }
 }
 
