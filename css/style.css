@@ -272,7 +272,7 @@ li { margin-bottom: .45em; }
 .hero h1 { margin-bottom: .5em; }
 .hero h1 em {
   font-style: normal;
-  color: var(--hijau-600);
+  color: var(--hijau-700);
   position: relative;
   white-space: nowrap;
 }
